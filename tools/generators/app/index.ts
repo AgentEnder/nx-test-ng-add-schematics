@@ -11,9 +11,10 @@ export default function generate({ name }: any): Rule {
     chain([
       externalSchematic('@nrwl/angular', 'app', {
         name,
+        standaloneConfig: true,
       }),
       externalSchematic('@angular/pwa', 'pwa', {
         project: name,
-      }),
+      })
     ]);
 }

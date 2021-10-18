@@ -30,6 +30,14 @@
     "test-app-e2e": {
       "tags": [],
       "implicitDependencies": ["test-app"]
+    },
+    "test-standalone-config-e2e": {
+      "tags": [],
+      "implicitDependencies": ["test-standalone-config"]
+    },
+    "test-standalone-config2-e2e": {
+      "tags": [],
+      "implicitDependencies": ["test-standalone-config2"]
     }
   }
 }
