@@ -1,128 +1,16 @@
 {
-  "version": 1,
+  "version": 2,
   "projects": {
-    "ng-app": {
-      "projectType": "application",
-      "root": "apps/ng-app",
-      "sourceRoot": "apps/ng-app/src",
-      "prefix": "test-pwa",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/apps/ng-app",
-            "index": "apps/ng-app/src/index.html",
-            "main": "apps/ng-app/src/main.ts",
-            "polyfills": "apps/ng-app/src/polyfills.ts",
-            "tsConfig": "apps/ng-app/tsconfig.app.json",
-            "assets": ["apps/ng-app/src/favicon.ico", "apps/ng-app/src/assets"],
-            "styles": ["apps/ng-app/src/styles.css"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "apps/ng-app/src/environments/environment.ts",
-                  "with": "apps/ng-app/src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "ng-app:build:production"
-            },
-            "development": {
-              "browserTarget": "ng-app:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "ng-app:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/ng-app/src/**/*.ts",
-              "apps/ng-app/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/ng-app"],
-          "options": {
-            "jestConfig": "apps/ng-app/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "ng-app-e2e": {
-      "root": "apps/ng-app-e2e",
-      "sourceRoot": "apps/ng-app-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/ng-app-e2e/cypress.json",
-            "devServerTarget": "ng-app:serve:development",
-            "tsConfig": "apps/ng-app-e2e/tsconfig.json"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "ng-app:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/ng-app-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    }
+    "ng-app": "apps/ng-app",
+    "ng-app-e2e": "apps/ng-app-e2e",
+    "test-app": "apps/test-app",
+    "test-app-e2e": "apps/test-app-e2e"
   },
   "cli": {
     "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
   },
-  "schematics": {
+  "generators": {
     "@nrwl/angular": {
       "application": {
         "linter": "eslint"
